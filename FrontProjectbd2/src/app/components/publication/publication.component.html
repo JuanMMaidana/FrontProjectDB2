@@ -1,1 +1,20 @@
-<p>publication works!</p>
+<div class="card text-right sizes dp01">
+  <div class="container">
+    <div class="row">
+      <div class="card-body col-5 pad">
+        <h4 class="card-title act">{{publication.title}}</h4>
+        <p class="card-text">{{publication.description}}</p>
+        <p class="card-text plus">Fecha de publicacion: {{publication.date}}</p>
+        <p class="card-text plus">Categoria: {{publication.categories}}</p>
+        <p class="card-text plus">Habilidad: {{publication.habilities}}</p>
+        <div class="buttonSize">
+          <button id="footer" type="button" class="btn btn-primary btn-lg btn-block center">Contactar</button>
+        </div>
+      </div>
+      <div class="col">
+        <img src="{{publication.photos}}" class="card-img-top sizephoto" alt="...">
+      </div>  
+    </div>
+  </div>
+</div>
+
