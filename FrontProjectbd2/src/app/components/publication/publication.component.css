@@ -1,3 +1,5 @@
+
+
 .sizes{
     width: 40rem;
     height: 22rem;
@@ -29,6 +31,8 @@
 
 .plus{
     text-decoration: underline;
+    font-family: 'Roboto', sans-serif;
+ 
 }
 
 .pad{

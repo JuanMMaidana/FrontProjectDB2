@@ -1,0 +1,24 @@
+.fixed-btn{
+    position: fixed;
+    bottom: 10%;
+    right: 3%;
+    background: #0FACF3;
+    width: 180px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    border-radius: 3px;
+    box-shadow: 4px 4px 4px #0a78aa;
+    cursor: pointer;
+  }
+
+
+.btn{
+    font-family: 'Roboto', sans-serif;
+    background-color: #6200EE;
+}
+
+
+.bottomb{
+    margin: 4rem;
+}
