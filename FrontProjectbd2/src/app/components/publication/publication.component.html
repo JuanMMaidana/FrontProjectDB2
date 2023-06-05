@@ -1,7 +1,7 @@
-<div class="card text-right sizes dp01">
+<div *ngIf="publication" class="card text-right sizes dp01">
   <div class="container">
     <div class="row">
-      <div class="card-body col-5 pad">
+      <div class="card-body col-5 pad ">
         <h4 class="card-title act">{{publication.title}}</h4>
         <p class="card-text">{{publication.description}}</p>
         <p class="card-text plus">Fecha de publicacion: {{publication.date}}</p>

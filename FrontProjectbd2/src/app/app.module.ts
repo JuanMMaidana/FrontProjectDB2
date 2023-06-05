@@ -7,18 +7,29 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PublicationComponent } from './components/publication/publication.component';
 import { PubishButtonComponent } from './components/pubish-button/pubish-button.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService} from './services/in-memory-data.service';
+import { PublicationGridComponent } from './components/publication-grid/publication-grid.component';
+import { GridSeachPageComponent } from './pages/grid-seach-page/grid-seach-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     PublicationComponent,
-    PubishButtonComponent
+    PubishButtonComponent,
+    PublicationGridComponent,
+    GridSeachPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]

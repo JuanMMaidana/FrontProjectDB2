@@ -3,6 +3,10 @@
 .sizes{
     width: 40rem;
     height: 22rem;
+	justify-content: center;
+
+
+	
 }
 
 .sizephoto{
@@ -11,7 +15,7 @@
     padding: 5%;
 }
 .col{
-    padding: 0;;
+    padding: 0;
 }
 
 .card{
@@ -86,3 +90,11 @@
     background-color: #6200EE;
 
 }
+
+
+.bottom-center-button {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+  }
