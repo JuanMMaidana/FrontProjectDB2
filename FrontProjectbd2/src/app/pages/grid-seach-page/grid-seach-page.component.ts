@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, debounceTime, fromEvent, map, switchMap } from 'rxjs';
 import { Publication } from 'src/app/components/entities/publication';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { Categoty } from 'src/app/components/entities/category';
@@ -46,13 +46,13 @@ export class GridSeachPageComponent {
 
 
 
-  // ngAfterViewInit(): void {
-  //   fromEvent<Event>(this.filmsInput.nativeElement, 'keyup').pipe(
-  //     map(event => (event.target as HTMLInputElement).value),
-  //     debounceTime(400),
-  //     switchMap(title => this.filmsService.getFilmsByTitleAndGenre(title, this.selectedGenre, this.i = 0, this.n))
-  //   ).subscribe(films => this.filmArray = films);
-  // }
+    //   ngAfterViewInit(): void {
+    //       fromEvent<Event>(this.filmsInput.nativeElement, 'keyup').pipe(
+    //       map(event => (event.target as HTMLInputElement).value),
+    //     debounceTime(400),
+    //     switchMap(title => this.filmsService.getFilmsByTitleAndGenre(title, this.selectedCategory, this.i = 0, this.n))
+    //   ).subscribe(films => this.filmArray = films);
+    // }
 
   
   // loadMoreFilms(){

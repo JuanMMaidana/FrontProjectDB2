@@ -37,6 +37,17 @@ export class PublicationService {
   }
 
 
+  //tengo el metodo en el otro projecto
+  getPublicationByTitleAndCategory(): Observable<Publication[]>{
+    return this.http.get<Publication[]>(this.publicationsUrl)
+    .pipe(
+      catchError(this.handleError<Publication[]>('getPublications', []))
+    );
+
+
+  }
+
+
 
 
 

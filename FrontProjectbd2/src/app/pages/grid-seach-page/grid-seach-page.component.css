@@ -196,23 +196,11 @@
   }
 
   .dp01v1 {
-    background-color: hsla(0, 100%, 100%, 0.05);
-    border-radius: 0.5rem;
-    box-shadow:
-      /* offset-x | offset-y | blur-radius | spread-radius | color */
-      0px 1px 1px 0px hsla(0,0%,0%,0.14), 
-      0px 2px 1px -1px hsla(0,0%,0%,0.12), 
-      0px 1px 3px 0px hsla(0,0%,0%,0.2);
-      padding: 0;
-      margin-left: 1px;
-      margin-right: 5px;
-      
+    background-color: #282828;
   }
 
 
-  .textt{
-    color: #ffffff;
-  }
+ 
 
   .textoptions{
     background: #6200EE;
