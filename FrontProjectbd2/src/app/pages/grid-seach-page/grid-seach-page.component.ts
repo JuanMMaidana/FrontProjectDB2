@@ -30,7 +30,6 @@ export class GridSeachPageComponent {
 
   async ngOnInit(): Promise<void> {
     await this.getAllCategories();
-    console.log(this.categories);
   }
 
   async getAllCategories() {

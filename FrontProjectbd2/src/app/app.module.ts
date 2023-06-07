@@ -12,6 +12,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService} from './services/in-memory-data.service';
 import { PublicationGridComponent } from './components/publication-grid/publication-grid.component';
 import { GridSeachPageComponent } from './pages/grid-seach-page/grid-seach-page.component';
+import { CreatePublicationComponent } from './components/create-publication/create-publication.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { GridSeachPageComponent } from './pages/grid-seach-page/grid-seach-page.
     PublicationComponent,
     PubishButtonComponent,
     PublicationGridComponent,
-    GridSeachPageComponent
+    GridSeachPageComponent,
+    CreatePublicationComponent
   ],
   imports: [
     BrowserModule,
