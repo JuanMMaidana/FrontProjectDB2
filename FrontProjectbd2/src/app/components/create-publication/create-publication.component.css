@@ -36,17 +36,18 @@ textarea{
 .fondo{
     background-color: #282828;
     color: #ffffff;
-    border: var(--bs-border-width) solid #6200EE;
+}
+
+.border{
+    border: var(--bs-border-width) solid #6200EE !important;
 }
 
 
 .textoptions{
     background: #282828;
-    border: var(--bs-border-width) solid #6200EE;
     color: #ffffff;
-  }
-
-
+    border: var(--bs-border-width) solid #6200EE !important;
+}
 
 
 .custom-file-input {
@@ -58,4 +59,13 @@ textarea{
 .title{
     color: #00AA55;
     margin-left: 1rem;
+}
+
+
+.mb-3{
+    padding-bottom: 1rem;
+}
+
+.text-danger{
+    font-size: medium;
 }

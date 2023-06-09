@@ -5,39 +5,58 @@
 
 
 
-    <div class="mb-3">   
-        <label class="form-label titu" for="floatingInput">Título</label>
-        <input type="title" class="form-control fondo" id="floatingInput">
-     
-    </div>
-    <div class="mb-3">
-        <label for="floatingInput2" class="form-label titu">Descripción</label>
-        <textarea type="Descripción" class="form-control fondo" id="floatingInput2"  style="height: 150px"></textarea>
-   
-        <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
-    </div>
-    <div class="row g-2">
-        <div class="col-md">
-            <select class="form-select form-select-sm mb-3 bg-dark text-white textoptions" aria-label=".form-select-sm example">
-                <option selected>Selecciona Categoría</option>
-                <option *ngFor="let categoty of categories">{{categoty.name}}</option>
-            </select>
-        </div>
-        <div class="col-md">
-            <select class="form-select form-select-sm mb-3 textoptions" aria-label=".form-select-sm example">
-                <option selected>Selecciona tipo Publicación</option>
-                <option>Necesidad</option>
-                <option>Voluntario</option>
-            </select>
-        </div>  
-    </div>   
-            <div class="input-group mb-3 textoptions">
-                <input type="file" class="form-control textoptions" id="inputGroupFile02">
-                <label class="input-group-text textoptions" for="inputGroupFile02">Subir</label>
+
+    <form class="needs-validation" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+        <div class="mb-3">
+            <label class="form-label titu" for="titleInput">Título</label>
+            <input formControlName="titleInput" required type="text" class="{{classTitle}}">
+            <div *ngIf="titleInput.invalid && (titleInput.dirty || titleInput.touched)">
+                <p *ngIf="titleInput.hasError('required')" class="text-danger">El título es requerido</p>
             </div>
-            <div class="buttonSize">
-                <button type="button" class="btn btn-primary btn-block btn-lg but">Publicar</button>
-              </div>
+
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label titu">Descripción</label>
+            <textarea formControlName="description" type="text" class="{{descriptionClass}}"  style="height: 150px"></textarea>
+            <div *ngIf="description.invalid && (description.dirty || description.touched)">
+                <p *ngIf="description.hasError('required')" class="text-danger">La description es requerida</p>
+            </div>
+
+        </div>
+        <div class="row g-2 mb-3">
+
+            <div class="col-md">
+                <select formControlName="category" class="form-select form-select-sm mb-3 textoptions border"  aria-label=".form-select-sm example">
+                    <option selected hidden>Selecciona Categoría</option>
+                    <option *ngFor="let category of categories">{{category.name}}</option>
+                </select>
+                <div *ngIf="category.invalid && (category.dirty || category.touched)">
+                    <p *ngIf="category.hasError('required')" class="text-danger">Categoria es requerida</p>
+                </div>
+
+
+            </div>
+
+            <div class="col-md">
+                <select formControlName="type" class="form-select form-select-sm mb-3 textoptions border" aria-label=".form-select-sm example">
+                    <option selected hidden>Selecciona tipo Publicación</option>
+                    <option>Necesidad</option>
+                    <option>Voluntario</option>
+                </select>
+                <div *ngIf="type.invalid && (type.dirty || type.touched)">
+                    <p *ngIf="type.hasError('required')" class="text-danger">Tipo es requerido</p>
+                </div>
+
+            </div>
+        </div>
+                <div class="input-group textoptions">
+                    <input type="file" class="form-control textoptions" id="inputGroupFile02">
+                    <label class="input-group-text textoptions" for="inputGroupFile02">Subir</label>
+                </div>
+                <div class="buttonSize">
+                    <button type="button" class="btn btn-primary btn-block btn-lg but" type="submit">Publicar</button>
+                </div>
+    </form>
 </div>
 
 
