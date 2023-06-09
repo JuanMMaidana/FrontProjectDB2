@@ -90,6 +90,10 @@ export class CreatePublicationComponent {
       if(formdata.titleInput != '' && formdata.description != '' && formdata.category != '' && formdata.type != '' && formdata.type != 'Selecciona tipo Publicación'){
         this.subbmited = true;
         console.log('Formulario enviado');
+      }else{
+        console.log('Formulario no enviado');
+        alert('Formulario no enviado');
+
       }
 
 
