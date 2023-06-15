@@ -9,14 +9,14 @@ import { Publication } from '../entities/publication';
 })
 export class PublicationGridComponent {
 
-  @Input() publications: Publication[] = [];  
+  @Input() publications: Publication[] = [];
 
   constructor(
     private publicationService: PublicationService
   ) { }
 
   getPublications(): void {
-    this.publicationService.getPublications()
+    this.publicationService.getPublicationsNecesity()
       .subscribe(publications => this.publications = publications);
   }
 

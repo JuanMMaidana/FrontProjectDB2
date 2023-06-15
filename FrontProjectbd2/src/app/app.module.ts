@@ -14,6 +14,10 @@ import { PublicationGridComponent } from './components/publication-grid/publicat
 import { GridSeachPageComponent } from './pages/grid-seach-page/grid-seach-page.component';
 import { CreatePublicationComponent } from './components/create-publication/create-publication.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ListgridsComponent } from './components/listgrids/listgrids.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { WelocmeComponent } from './components/welocme/welocme.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     PubishButtonComponent,
     PublicationGridComponent,
     GridSeachPageComponent,
-    CreatePublicationComponent
+    CreatePublicationComponent,
+    ListgridsComponent,
+    RegisterComponent,
+    LoginComponent,
+    WelocmeComponent
   ],
   imports: [
     BrowserModule,

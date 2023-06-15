@@ -7,14 +7,18 @@
 
 
     <form class="needs-validation" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+
+
+
         <div class="mb-3">
             <label class="form-label titu" for="titleInput">Título</label>
             <input formControlName="titleInput" required type="text" class="{{classTitle}}">
             <div *ngIf="titleInput.invalid && (titleInput.dirty || titleInput.touched)">
                 <p *ngIf="titleInput.hasError('required')" class="text-danger">El título es requerido</p>
             </div>
-
         </div>
+
+
         <div class="mb-3">
             <label for="description" class="form-label titu">Descripción</label>
             <textarea formControlName="description" type="text" class="{{descriptionClass}}"  style="height: 150px"></textarea>
@@ -26,6 +30,8 @@
         <div class="row g-2 mb-3">
 
             <div class="col-md">
+
+
                 <select formControlName="category" class="form-select form-select-sm mb-3 textoptions border"  aria-label=".form-select-sm example">
                     <option selected hidden>Selecciona Categoría</option>
                     <option *ngFor="let category of categories">{{category.name}}</option>

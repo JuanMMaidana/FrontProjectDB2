@@ -12,7 +12,7 @@ import { FormGroup, FormBuilder, Validators, FormControl, NonNullableFormBuilder
 })
 export class CreatePublicationComponent {
 
-  constructor(private categoryService: CategoriesService, private formBuilder:FormBuilder, private fb: NonNullableFormBuilder) {   }
+  constructor(private categoryService: CategoriesService, private fb: NonNullableFormBuilder) {   }
 
 
   categories?: Categoty[];
@@ -66,6 +66,16 @@ export class CreatePublicationComponent {
   get type(){
     return this.form.controls['type'];
   }
+
+
+
+    // VERIFY LETTERS
+    verifyLetter(campo: string): boolean {
+      const patron: RegExp = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/;
+      return patron.test(campo);
+    }
+
+
 
   onSubmit( formdata: any) {
 

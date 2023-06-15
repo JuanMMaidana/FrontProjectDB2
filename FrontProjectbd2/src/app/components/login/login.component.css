@@ -1,0 +1,77 @@
+.boxR{
+  border-radius: 10px;
+  background-color: #121212;
+  width: 35%;
+  align-items: center;;
+  margin: 0 auto;
+  margin-top: 5rem;
+  color: #282828;
+
+}
+
+
+
+.but{
+  background-color: #6200EE;
+  border: var(--bs-border-width) solid #00AA55;
+}
+
+.buttonSize{
+  text-align: center;
+  /* padding: 2rem; */
+  padding: 1px;
+
+
+}
+
+textarea{
+  background-color: #282828;
+  color: #ffffff;
+}
+
+
+.titu{
+  color: #6200EE;
+}
+
+
+.fondo{
+  background-color: #282828;
+  color: #ffffff;
+}
+
+.border{
+  border: var(--bs-border-width) solid #6200EE !important;
+}
+
+
+.textoptions{
+  background: #282828;
+  color: #ffffff;
+  border: var(--bs-border-width) solid #6200EE !important;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+
+.custom-file-input {
+  background-color: #121212!important;
+  border-color: #121212!important;
+}
+
+
+.title{
+  color: #00AA55;
+  margin-left: 1rem;
+}
+
+
+.mb-3{
+  padding-bottom: 0.2rem;
+}
+
+.text-danger{
+  font-size: medium;
+}
+
+

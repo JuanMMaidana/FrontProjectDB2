@@ -1,31 +1,37 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-import { Categoty } from '../components/entities/category';
+import { Observable, of, catchError} from 'rxjs';
+import { Question } from '../components/entities/questions';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class CategoriesService {
+export class SecurityQuestionsService {
+
+
+  private securityquestions = 'api/securityquestions';  // URL to web api
+
 
   constructor(
     private http: HttpClient,
-  ) { }
+    ) { }
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  private categories = 'api/categories';  // URL to web api
-
-
-  getCategories(): Observable<Categoty[]>{
-    return this.http.get<Categoty[]>(this.categories)
+  getSecurityQuestions(): Observable<Question[]>{
+    return this.http.get<Question[]>(this.securityquestions)
     .pipe(
-      catchError(this.handleError<Categoty[]>('getCategories', []))
+      catchError(this.handleError<Question[]>('getSecurityQuestions', []))
     );
   }
+
+
+
+
 
 
 
@@ -53,7 +59,5 @@ export class CategoriesService {
       return of(result as T);
     };
   }
-
-
 
 }

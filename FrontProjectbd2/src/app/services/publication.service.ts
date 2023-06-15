@@ -26,15 +26,32 @@ export class PublicationService {
 
   private publicationsUrl = 'api/publications';  // URL to web api
 
- 
 
-  getPublications(): Observable<Publication[]>{
+
+  // servicio para traer publicaciones oferta, en el backend ver si el boolean es 1 o 0 para traer las ofertas
+
+  getPublicationsOfer(): Observable<Publication[]>{
     return this.http.get<Publication[]>(this.publicationsUrl)
     .pipe(
       catchError(this.handleError<Publication[]>('getPublications', []))
     );
 
   }
+
+
+
+
+  // servicio para traer publicaciones oferta, en el backend ver si el boolean es 1 o 0 para traer las necesidaddes
+
+  getPublicationsNecesity(): Observable<Publication[]>{
+    return this.http.get<Publication[]>(this.publicationsUrl)
+    .pipe(
+      catchError(this.handleError<Publication[]>('getPublications', []))
+    );
+
+  }
+
+
 
 
   //tengo el metodo en el otro projecto

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Publication } from '../components/entities/publication';
+import { Question } from '../components/entities/questions';
 @Injectable({
   providedIn: 'root',
 })
@@ -27,6 +28,14 @@ export class InMemoryDataService implements InMemoryDbService {
     { id_category: 8, name: 'Otros' }
   ];
 
-    return {publications, categories};
+
+  const securityquestions: Question[] = [
+    { id_question: 1, question: '¿Cuál es el nombre de tu mascota?' },
+    { id_question: 2, question: '¿Cuál es el nombre de tu primer amor?' },
+    { id_question: 3, question: '¿Cuál es el nombre de tu primer profesor?' },
+    { id_question: 4, question: '¿Cuál es el nombre de tu primer mascota?' }
+  ];
+
+    return {publications, categories, securityquestions};
   }
 }
