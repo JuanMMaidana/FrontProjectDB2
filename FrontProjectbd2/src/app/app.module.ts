@@ -18,6 +18,8 @@ import { ListgridsComponent } from './components/listgrids/listgrids.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { WelocmeComponent } from './components/welocme/welocme.component';
+import { ModalContactComponent } from './components/modal-contact/modal-contact.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { WelocmeComponent } from './components/welocme/welocme.component';
     ListgridsComponent,
     RegisterComponent,
     LoginComponent,
-    WelocmeComponent
+    WelocmeComponent,
+    ModalContactComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

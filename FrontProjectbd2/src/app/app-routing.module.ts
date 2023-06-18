@@ -5,6 +5,7 @@ import { CreatePublicationComponent } from './components/create-publication/crea
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { WelocmeComponent } from './components/welocme/welocme.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   {path: 'necesidades', component: GridSeachPageComponent},
@@ -12,8 +13,8 @@ const routes: Routes = [
   {path: 'subirPublicacion', component: CreatePublicationComponent},
   {path: 'registro', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'bienvenido', component: WelocmeComponent}
-
+  {path: 'bienvenido', component: WelocmeComponent},
+  {path: 'perfil', component: ProfileComponent}
 ];
 
 @NgModule({

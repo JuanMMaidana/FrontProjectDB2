@@ -1,0 +1,133 @@
+.posterImg2{
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 0.375rem;
+  }
+
+
+.modalSubTitle{
+  text-align: center;
+  margin: 2rem;
+  font-size: 2.2rem;
+  color:#A5C9CA;
+  font-weight: 700;
+
+}
+
+
+.modalPhoto{
+  background-color:#6200EE;
+  border-radius: 0.5rem;
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+
+.modalBackground{
+  background-color: #282828;
+
+}
+.modalBackground2{
+  padding: 0.8rem;
+  background-color: #282828;
+
+}
+
+.modalSize{
+  width: 100%;
+}
+
+
+
+.butons{
+  justify-content: center;
+  padding: 1rem;
+}
+
+
+.bi-plus-circle{
+  font-size: 2rem;
+  color: #A5C9CA;
+  margin-left: 1rem;
+  margin-right: 1rem;
+
+}
+
+.bi-check-circle{
+  font-size: 2rem;
+  color: #A5C9CA;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+
+.bi-star{
+  font-size: 2rem;
+  color: #A5C9CA;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.bi-star-fill{
+  font-size: 2rem;
+  color: #A5C9CA;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+
+.buttonText{
+  margin: 0;
+  padding: 0;
+  color: #A5C9CA;
+  font-size: 0.8rem;
+}
+
+
+.butones{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.fontSize{
+  font-weight: 800;
+}
+
+
+.sizephoto{
+  width: 16rem;
+  height: 15rem;
+  padding: 5%;
+}
+
+
+.modalPhoto{
+  background-color:#6200EE;
+  border-radius: 0.5rem;
+  margin: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+
+.infoUser{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+
+  background-color: #282828;
+  border-radius: 0.5rem;
+
+}
+
+
+.miniData{
+  color: #ffffff;
+  font-size: 1.1rem;
+}

@@ -1,0 +1,19 @@
+<div class="profile-body">
+  <div class="profile-img-container">
+      <div class="profile-img-wrapper"><img src="https://image.tmdb.org/t/p/original/wp6OxE4poJ4G7c0U2ZIXasTSMR7.jpg" alt="" class="profile-img"></div>
+  </div>
+  <h3 class='profile-name mt-4' *ngIf="user">{{user.name}} {{user.surname}}</h3>
+  <div class="row">
+    <div class="col">
+      <h2 class="profile-name2 mt-4">Email:     {{user.email}}</h2>
+    </div>
+    <div>
+      <h2 class="profile-name2 mt-4">Dirección: {{user.direccion}}</h2>
+    </div>
+  </div>
+
+   <!-- aca va un ng if para saber si tiene publicaiones para que no quede volando el tiutlo "Mis publicaciones" -->
+  <h2 class="profile-name3">Mis publicaciones</h2>
+    <app-publication-grid></app-publication-grid>
+
+</div>

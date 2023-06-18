@@ -8,12 +8,12 @@
         <p class="card-text plus">Categoria: {{publication.categories}}</p>
         <p class="card-text plus">Habilidad: {{publication.habilities}}</p>
         <div class="buttonSize">
-          <button type="button" class="btn btn-primary btn-block center">Contactar</button>
+          <button type="button" class="btn btn-primary btn-block center" (click)="openModal()">Contactar</button>
         </div>
       </div>
       <div class="col">
         <img src="{{publication.photos}}" class="card-img-top sizephoto" alt="...">
-      </div>  
+      </div>
     </div>
   </div>
 </div>

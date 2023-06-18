@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { Categoty } from '../entities/category';
 import { FormGroup, FormBuilder, Validators, FormControl, NonNullableFormBuilder } from '@angular/forms';
+import { from } from 'rxjs';
 
 
 
@@ -81,30 +82,24 @@ export class CreatePublicationComponent {
 
     console.log(formdata);
 
+    let itsOk = true;
 
-    if (formdata.titleInput == ''){
-
+    if(formdata.titleInput.length < 3 || formdata.titleInput.length > 35){
       this.classTitle = 'form-control fondo is-invalid';
+      itsOk = false;
     }else{
-      this.classTitle = 'form-control fondo border is-valid';
+      this.classTitle = 'form-control fondo is-valid';
     }
 
-    if (formdata.description == ''){
+    if(formdata.description.length < 3 || formdata.description.length > 205){
       this.descriptionClass = 'form-control fondo is-invalid';
+      itsOk = false;
     }else{
-      this.descriptionClass = 'form-control fondo border is-valid';
+      this.descriptionClass = 'form-control fondo is-valid';
     }
 
 
 
-      if(formdata.titleInput != '' && formdata.description != '' && formdata.category != '' && formdata.type != '' && formdata.type != 'Selecciona tipo Publicación'){
-        this.subbmited = true;
-        console.log('Formulario enviado');
-      }else{
-        console.log('Formulario no enviado');
-        alert('Formulario no enviado');
-
-      }
 
 
 }
