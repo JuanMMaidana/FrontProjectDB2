@@ -16,14 +16,6 @@ export class ModalContactComponent {
   @Input() publication?: Publication;
 
 
-  user: UserFront = {
-    id_user: 1,
-    name: 'Juan',
-    surname: 'Perez',
-    email: 'juanperez@email.com',
-    ubication: 'Calle Falsa 123'}
-
-
 
 
   modalClose() {
