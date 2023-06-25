@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Publication } from '../components/entities/publication';
-import { PUBLICATIONS } from '../mocks/mock-publications';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -30,38 +29,23 @@ export class PublicationService {
 
   // servicio para traer publicaciones oferta, en el backend ver si el boolean es 1 o 0 para traer las ofertas
 
-  getPublicationsOfer(): Observable<Publication[]>{
-    return this.http.get<Publication[]>(this.publicationsUrl)
-    .pipe(
-      catchError(this.handleError<Publication[]>('getPublications', []))
-    );
-
-  }
-
-
-
-
-  // servicio para traer publicaciones oferta, en el backend ver si el boolean es 1 o 0 para traer las necesidaddes
-
-  getPublicationsNecesity(): Observable<Publication[]>{
-    return this.http.get<Publication[]>(this.publicationsUrl)
-    .pipe(
-      catchError(this.handleError<Publication[]>('getPublications', []))
-    );
-
-  }
-
-
-
-
   //tengo el metodo en el otro projecto
-  getPublicationByTitleAndCategory(): Observable<Publication[]>{
-    return this.http.get<Publication[]>(this.publicationsUrl)
+  getPublicationByTitleAndCategory(titulo : string, categoria : string, es_solicitud : boolean): Observable<Publication[]>{
+
+    console.log(titulo, categoria, es_solicitud);
+    if(categoria == 'Por Categoria' ){
+      categoria = '';
+    }else if (categoria == 'Buscar por categoría'){
+      categoria = '';
+    }
+
+    console.log(titulo, categoria, es_solicitud);
+
+    return this.http.post<Publication[]>(this.publicationsUrl, {titulo, categoria, es_solicitud})
     .pipe(
+      tap(_ => console.log('fetched publications')),
       catchError(this.handleError<Publication[]>('getPublications', []))
     );
-
-
   }
 
 

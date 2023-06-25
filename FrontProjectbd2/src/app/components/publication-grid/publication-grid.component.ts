@@ -15,12 +15,8 @@ export class PublicationGridComponent {
     private publicationService: PublicationService
   ) { }
 
-  getPublications(): void {
-    this.publicationService.getPublicationsNecesity()
-      .subscribe(publications => this.publications = publications);
-  }
 
-  ngOnInit(): void {
-    this.getPublications();
-  }
+
+
+  
 }

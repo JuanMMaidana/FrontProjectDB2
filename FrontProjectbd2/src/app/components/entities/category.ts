@@ -1,4 +1,4 @@
 export interface Categoty {
-    id_category: number;
-    name: string;
-}  
+  id_categoria: number;
+  nombre: string;
+}

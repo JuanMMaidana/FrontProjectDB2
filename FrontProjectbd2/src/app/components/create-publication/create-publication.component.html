@@ -34,7 +34,7 @@
 
                 <select formControlName="category" class="form-select form-select-sm mb-3 textoptions border"  aria-label=".form-select-sm example">
                     <option selected hidden>Selecciona Categoría</option>
-                    <option *ngFor="let category of categories">{{category.name}}</option>
+                    <option *ngFor="let category of categories">{{category.nombre}}</option>
                 </select>
                 <div *ngIf="category.invalid && (category.dirty || category.touched)">
                     <p *ngIf="category.hasError('required')" class="text-danger">Categoria es requerida</p>
