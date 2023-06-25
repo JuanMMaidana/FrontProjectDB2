@@ -71,6 +71,15 @@ export class RegisterComponent {
 
 
 
+  getIdPregunta(pregunta: string): number {
+    let id = 0;
+    this.questions.forEach(element => {
+      if (element.pregunta === pregunta) {
+        id = element.id_pregunta;
+      }
+    });
+    return id;
+  }
 
   get ci() {
     return this.form.controls['ci'];
@@ -128,15 +137,7 @@ export class RegisterComponent {
   }
 
 
-  getIdPregunta(pregunta: string): number {
-    let id = 0;
-    this.questions.forEach(element => {
-      if (element.pregunta === pregunta) {
-        id = element.id_pregunta;
-      }
-    });
-    return id;
-  }
+
 
 
 
@@ -182,7 +183,7 @@ export class RegisterComponent {
     }
 
 
-    if(formdata.password != formdata.password2 || formdata.password.length < 8 || formdata.password2.length < 8){
+    if(formdata.password != formdata.password2 || formdata.password.length < 8 || formdata.password.length < 8){
       this.passwordIsValid = 'form-control fondo is-invalid';
       this.password2IsValid = 'form-control fondo is-invalid';
       itsOk = false;
@@ -203,8 +204,6 @@ export class RegisterComponent {
       console.log("todo ok");
 
       const id = this.getIdPregunta(formdata.question);
-
-      console.log(formdata.ciClass, formdata.names, formdata.surname, formdata.email, formdata.direccion, formdata.password, formdata.confirmPassword, id, formdata.response)
 
       this.userService.postRegister(formdata.ci, formdata.names, formdata.surname, formdata.email, formdata.direccion, formdata.password, formdata.password2, id, formdata.response).subscribe(data => {
         if ('type' in data && data.type === 'success') {
