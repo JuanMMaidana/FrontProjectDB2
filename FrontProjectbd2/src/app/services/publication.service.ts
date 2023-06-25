@@ -24,7 +24,7 @@ export class PublicationService {
   };
 
 
-  private publicationsUrl = 'api/publications';  // URL to web api
+  private publicationsUrl = 'http://localhost:3000/publicationsFilters';  // URL to web api
 
 
 

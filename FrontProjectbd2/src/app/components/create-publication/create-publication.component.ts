@@ -47,7 +47,8 @@ export class CreatePublicationComponent {
       titleInput: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
       description: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]),
       category: new FormControl('', [Validators.required]),
-      type: new FormControl('', [Validators.required])
+      type: new FormControl('', [Validators.required]),
+      photoInput: new FormControl('', [Validators.required])
 
     });
   }
@@ -67,6 +68,11 @@ export class CreatePublicationComponent {
   get type(){
     return this.form.controls['type'];
   }
+
+  get photoInput(){
+    return this.form.controls['photoInput'];
+  }
+
 
 
 
@@ -97,6 +103,40 @@ export class CreatePublicationComponent {
     }else{
       this.descriptionClass = 'form-control fondo is-valid';
     }
+
+    if(formdata.category == ''){
+      this.categoryClass = 'form-select form-select-sm mb-3 textoptions is-invalid';
+      itsOk = false;
+    }else{
+      this.categoryClass = 'form-select form-select-sm mb-3 textoptions is-valid';
+    }
+
+    if(formdata.type == ''){
+      this.typeClass = 'form-select form-select-sm mb-3 textoptions is-invalid';
+      itsOk = false;
+    }else{
+      this.typeClass = 'form-select form-select-sm mb-3 textoptions is-valid';
+    }
+
+    if(formdata.photoInput == ''){
+      this.typeClass = 'form-select form-select-sm mb-3 textoptions is-invalid';
+      console.log('photo');
+      itsOk = false;
+    }else{
+      this.typeClass = 'form-select form-select-sm mb-3 textoptions is-valid';
+    }
+
+
+    if(itsOk){
+      this.subbmited = true;
+      console.log('its ok');
+    }else{
+      this.subbmited = false;
+      console.log('its not ok');
+    }
+
+
+
 
 
 

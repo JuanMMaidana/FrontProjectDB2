@@ -9,7 +9,7 @@ import { PublicationComponent } from './components/publication/publication.compo
 import { PubishButtonComponent } from './components/pubish-button/pubish-button.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService} from './services/in-memory-data.service';
+// import { InMemoryDataService} from './services/in-memory-data.service';
 import { PublicationGridComponent } from './components/publication-grid/publication-grid.component';
 import { GridSeachPageComponent } from './pages/grid-seach-page/grid-seach-page.component';
 import { CreatePublicationComponent } from './components/create-publication/create-publication.component';
@@ -20,6 +20,9 @@ import { LoginComponent } from './components/login/login.component';
 import { WelocmeComponent } from './components/welocme/welocme.component';
 import { ModalContactComponent } from './components/modal-contact/modal-contact.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { FriendsComponent } from './pages/friends/friends.component';
+import { TokenService } from './services/token.service';
+
 
 @NgModule({
   declarations: [
@@ -35,19 +38,22 @@ import { ProfileComponent } from './components/profile/profile.component';
     LoginComponent,
     WelocmeComponent,
     ModalContactComponent,
-    ProfileComponent
+    ProfileComponent,
+    FriendsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
+    // HttpClientInMemoryWebApiModule.forRoot(
+    //   InMemoryDataService, { dataEncapsulation: false }
+    // )
   ],
-  providers: [],
+  providers: [
+    TokenService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

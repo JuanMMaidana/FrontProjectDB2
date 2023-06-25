@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class ProfileComponent {
 
 
+
   user = {
     id_user: 1,
     name: 'Juan',

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { NonNullableFormBuilder } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +14,7 @@ export class LoginComponent {
 
 
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private userService: UserService,private router: Router) { }
 
   subbmitted = false;
   form!: FormGroup;
@@ -23,20 +25,21 @@ export class LoginComponent {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      ci: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
    });
   }
 
-  get email() { return this.form.get('email'); }
+  get ci() { return this.form.get('ci'); }
   get password() { return this.form.get('password'); }
 
 
 
-    // VERIFY EMAIL
-    verifyEmail(email: string): boolean {
-      const patron: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      return patron.test(email);
+
+    // VERFY NUMERIC
+    verifyNumeric(input: string): boolean {
+      const regex: RegExp = /^[0-9]+$/;
+      return regex.test(input);
     }
 
 
@@ -46,7 +49,7 @@ export class LoginComponent {
 
     let itsOk = true;
 
-    if(!this.verifyEmail(formdata.email)){
+    if(!this.verifyNumeric(formdata.ci)){
       this.emailIsValid = 'form-control fondo is-invalid';
       itsOk = false;
     }else{
@@ -61,7 +64,18 @@ export class LoginComponent {
     }
 
     if(itsOk){
-      console.log(formdata);
+      console.log(formdata.ci, formdata.password);
+      this.userService.postLogin(formdata.ci, formdata.password).subscribe(
+        (data) => {
+          if('type' in data && data.type === 'success') {
+            this.router.navigate(['/necesidades']);
+          }
+          else {
+            console.log(data);
+          }
+        }
+      );
+
     }
     else{
       console.log("Error en el formulario");

@@ -8,12 +8,12 @@
 
   <form class="needs-validation" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
 
-    <!-- EMAIL -->
+    <!-- ci -->
     <div class="form-group mb-3 ">
-      <label class="form-label titu" for="email">Email</label>
-      <input formControlName="email" required type="text" class="{{emailIsValid}}" >
-    <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
-      <p *ngIf="email?.hasError('required')" class="text-danger">El Correo Electrónico es requerido</p>
+      <label class="form-label titu" for="ci">CI</label>
+      <input formControlName="ci" required type="text" class="{{emailIsValid}}" >
+    <div *ngIf="ci?.invalid && (ci?.dirty || ci?.touched)">
+      <p *ngIf="ci?.hasError('required')" class="text-danger">El CI es requerido</p>
     </div>
   </div>
 

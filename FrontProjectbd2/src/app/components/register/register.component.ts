@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, NonNullableFormBuilder } from '@angular/forms';
 import { SecurityQuestionsService } from 'src/app/services/security-questions.service';
 import { Question } from '../entities/questions';
+import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-register',
@@ -10,7 +13,7 @@ import { Question } from '../entities/questions';
 })
 export class RegisterComponent {
 
-  constructor(private securityQuestions :SecurityQuestionsService, private formBuilder: FormBuilder) {
+  constructor(private securityQuestions :SecurityQuestionsService, private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
 
   }
 
@@ -30,8 +33,7 @@ export class RegisterComponent {
   password2IsValid: string = 'form-control fondo border';
   questionIsValid: string = 'form-select form-select-sm mb-3 textoptions border';
   responseIsValid: string = 'form-control fondo border';
-
-
+  direccionIsValid: string = 'form-control fondo border';
 
 
 
@@ -47,12 +49,13 @@ export class RegisterComponent {
     console.log(this.questions);
 
       this.form = this.formBuilder.group({
-      ciClass: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(8)]],
+        ci: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(8)]],
       names: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
       surname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
       email: ['', [Validators.required, Validators.email]],
+      direccion: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
+      password2: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
       question: ['', [Validators.required]],
       response: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
    });
@@ -69,8 +72,8 @@ export class RegisterComponent {
 
 
 
-  get ciClass() {
-    return this.form.controls['ciClass'];
+  get ci() {
+    return this.form.controls['ci'];
   }
 
   get names() {
@@ -85,12 +88,16 @@ export class RegisterComponent {
     return this.form.controls['email'];
   }
 
+  get direccion() {
+    return this.form.controls['direccion'];
+  }
+
   get password() {
     return this.form.controls['password'];
   }
 
-  get confirmPassword() {
-    return this.form.controls['confirmPassword'];
+  get password2() {
+    return this.form.controls['password2'];
   }
 
   get question() {
@@ -121,16 +128,26 @@ export class RegisterComponent {
   }
 
 
+  getIdPregunta(pregunta: string): number {
+    let id = 0;
+    this.questions.forEach(element => {
+      if (element.pregunta === pregunta) {
+        id = element.id_pregunta;
+      }
+    });
+    return id;
+  }
+
+
 
   async onSubmit(formdata: any) {
     let itsOk = true;
     console.log(this.form.value);
 
 
-    if (this.verifyNumeric(formdata.ciClass) == false){
+    if (this.verifyNumeric(formdata.ci) == false){
       this.ciIsValid = 'form-control fondo is-invalid';
       itsOk = false;
-      console.log("ci invalido");
     }else{
       this.ciIsValid = 'form-control fondo is-valid';
     }
@@ -138,7 +155,6 @@ export class RegisterComponent {
     if(this.verifyLetter(formdata.names) == false){
       this.nameIsValid = 'form-control fondo is-invalid';
       itsOk = false;
-      console.log("nombre invalido");
     }else{
       this.nameIsValid = 'form-control fondo is-valid';
     }
@@ -146,7 +162,6 @@ export class RegisterComponent {
     if(this.verifyLetter(formdata.surname) == false){
       this.surnameIsValid = 'form-control fondo is-invalid';
       itsOk = false;
-      console.log("apellido invalido");
     }else{
       this.surnameIsValid = 'form-control fondo is-valid';
     }
@@ -155,16 +170,22 @@ export class RegisterComponent {
     if(this.verifyEmail(formdata.email) == false){
       this.emailIsValid = 'form-control fondo is-invalid';
       itsOk = false;
-      console.log("email invalido");
     }else{
       this.emailIsValid = 'form-control fondo is-valid';
     }
 
-    if(formdata.password != formdata.confirmPassword || formdata.password.length < 8 || formdata.confirmPassword.length < 8){
+    if(formdata.direccion.length < 3){
+      this.direccionIsValid = 'form-control fondo is-invalid';
+      itsOk = false;
+    }else{
+      this.direccionIsValid = 'form-control fondo is-valid';
+    }
+
+
+    if(formdata.password != formdata.password2 || formdata.password.length < 8 || formdata.password2.length < 8){
       this.passwordIsValid = 'form-control fondo is-invalid';
       this.password2IsValid = 'form-control fondo is-invalid';
       itsOk = false;
-      console.log("contraseñas no coinciden");
     }else{
       this.passwordIsValid = 'form-control fondo is-valid';
       this.password2IsValid = 'form-control fondo is-valid';
@@ -173,16 +194,29 @@ export class RegisterComponent {
     if(this.verifyLetter(formdata.response) == false){
       this.responseIsValid = 'form-control fondo is-invalid';
       itsOk = false;
-      console.log("respuesta invalida");
     }else{
       this.responseIsValid = 'form-control fondo is-valid';
     }
 
-    if(itsOk == true){
+
+    if (itsOk) {
       console.log("todo ok");
-    }else{
+
+      const id = this.getIdPregunta(formdata.question);
+
+      console.log(formdata.ciClass, formdata.names, formdata.surname, formdata.email, formdata.direccion, formdata.password, formdata.confirmPassword, id, formdata.response)
+
+      this.userService.postRegister(formdata.ci, formdata.names, formdata.surname, formdata.email, formdata.direccion, formdata.password, formdata.password2, id, formdata.response).subscribe(data => {
+        if ('type' in data && data.type === 'success') {
+          this.router.navigate(['/login']);
+        } else if ('message' in data) {
+          console.log(data.message);
+        }
+      });
+    } else {
       console.log("todo mal");
     }
+
 
 
 

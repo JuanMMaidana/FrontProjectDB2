@@ -10,10 +10,10 @@
 
     <!-- CEDULA -->
       <div class="form-group mb-3 ">
-          <label class="form-label titu" for="ciClass">CI</label>
-          <input formControlName="ciClass" required type="text" class="{{ciIsValid}}" >
-        <div *ngIf="ciClass.invalid && (ciClass.dirty || ciClass.touched)">
-          <p *ngIf="ciClass.hasError('required')" class="text-danger">La cedula no es válida</p>
+          <label class="form-label titu" for="ci">CI</label>
+          <input formControlName="ci" required type="text" class="{{ciIsValid}}" >
+        <div *ngIf="ci.invalid && (ci.dirty || ci.touched)">
+          <p *ngIf="ci.hasError('required')" class="text-danger">La cedula no es válida</p>
         </div>
       </div>
 
@@ -47,6 +47,16 @@
     </div>
 
 
+    <!-- DIRECCION -->
+    <div class="form-group mb-3 ">
+      <label class="form-label titu" for="direccion">Direccion</label>
+      <input formControlName="direccion" required type="text" class="{{direccionIsValid}}" >
+        <div *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)">
+          <p *ngIf="direccion.hasError('required')" class="text-danger">La Direeccion no es válida</p>
+        </div>
+    </div>
+
+
     <!-- PASSWORD -->
     <div class="form-group mb-3 ">
       <label class="form-label titu" for="password">Contraseña</label>
@@ -59,10 +69,10 @@
 
     <!-- CONFIRM PASSWORD -->
     <div class="form-group mb-3 ">
-      <label class="form-label titu" for="confirmPassword">Confrimar Contraseña</label>
-      <input formControlName="confirmPassword" required type="password" class="{{password2IsValid}}" >
-        <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
-          <p *ngIf="confirmPassword.hasError('required')" class="text-danger">La Contraseña no es válida</p>
+      <label class="form-label titu" for="password2">Confrimar Contraseña</label>
+      <input formControlName="password2" required type="password" class="{{password2IsValid}}" >
+        <div *ngIf="password2.invalid && (password2.dirty || password2.touched)">
+          <p *ngIf="password2.hasError('required')" class="text-danger">La Contraseña no es válida</p>
         </div>
     </div>
 
@@ -74,7 +84,7 @@
           <label class="form-label titu">Pregunta de Seguridad</label>
           <select formControlName="question" class="form-select form-select-sm mb-3 textoptions border" aria-label=".form-select-sm example">
             <option selected hidden></option>
-            <option *ngFor="let question of questions">{{question.question}}</option>
+            <option *ngFor="let question of questions">{{question.pregunta}}</option>
           </select>
 
           <div *ngIf="question.invalid && (question.dirty || question.touched)">

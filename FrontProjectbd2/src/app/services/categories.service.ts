@@ -17,7 +17,7 @@ export class CategoriesService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  private categories = 'api/categories';  // URL to web api
+  private categories = 'http://localhost:3000/categorias';  // URL to web api
 
 
   getCategories(): Observable<Categoty[]>{

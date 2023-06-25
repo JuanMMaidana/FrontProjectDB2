@@ -1,6 +1,6 @@
 <div class="conteiner">
     <div class="row marginbot" *ngIf="this.publications.length > 0">
-        <div class="col d-flex justify-content-center marginbot" *ngFor="let public of publications" >
+        <div class="col d-flex justify-content-center marginbot" *ngFor="let public of publications">
             <app-publication [publication]="public"></app-publication>
         </div>
     </div>

@@ -11,7 +11,7 @@ import { Question } from '../components/entities/questions';
 export class SecurityQuestionsService {
 
 
-  private securityquestions = 'api/securityquestions';  // URL to web api
+  private securityquestions = 'http://localhost:3000/securityQuestion';  // URL to web api
 
 
   constructor(
@@ -27,6 +27,8 @@ export class SecurityQuestionsService {
     .pipe(
       catchError(this.handleError<Question[]>('getSecurityQuestions', []))
     );
+
+
   }
 
 
