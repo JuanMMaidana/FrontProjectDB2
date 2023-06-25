@@ -1,0 +1,100 @@
+
+
+.sizes{
+    width: 40rem;
+    height: 22rem;
+	justify-content: center;
+
+
+	
+}
+
+.sizephoto{
+    width: 17rem;
+    height: 22rem;
+    padding: 5%;
+}
+.col{
+    padding: 0;
+}
+
+.card{
+    overflow: hidden;
+    color: white;
+    border-radius: 0.5rem;
+    font-size: medium;
+
+}
+
+.buttonSize{
+    text-align: center;
+    padding: 0;}
+.card-text{
+    margin: 6px;
+}
+
+.plus{
+    text-decoration: underline;
+    font-family: 'Roboto', sans-serif;
+ 
+}
+
+.pad{
+    padding-right: 0;
+}
+
+
+.dp01 {
+	background-color: hsla(0, 100%, 100%, 0.05);
+	box-shadow:
+		/* offset-x | offset-y | blur-radius | spread-radius | color */
+		0px 1px 1px 0px hsla(0,0%,0%,0.14), 
+		0px 2px 1px -1px hsla(0,0%,0%,0.12), 
+		0px 1px 3px 0px hsla(0,0%,0%,0.2);
+}
+
+.dp24 {
+	background-color: hsla(0, 100%, 100%, 0.16);	
+	box-shadow:
+		/* offset-x | offset-y | blur-radius | spread-radius | color */
+		0px 24px 38px 3px hsla(0,0%,0%,0.14), 
+		0px 9px 46px 8px hsla(0,0%,0%,0.12), 
+		0px 11px 15px -7px hsla(0,0%,0%,0.2);
+}
+
+
+.dp04 {
+	background-color: hsla(0, 100%, 100%, 0.09);	
+	box-shadow:
+		/* offset-x | offset-y | blur-radius | spread-radius | color */
+		0px 4px 5px 0px hsla(0,0%,0%,0.14), 
+		0px 1px 10px 0px hsla(0,0%,0%,0.12), 
+		0px 2px 4px -1px hsla(0,0%,0%,0.2);
+}
+
+.act{
+    color: #ffffff !important;
+    background-color: black;
+	background-color: hsla(0, 100%, 100%, 0.09);	
+	box-shadow:
+		/* offset-x | offset-y | blur-radius | spread-radius | color */
+		0px 4px 5px 0px hsla(0,0%,0%,0.14), 
+		0px 1px 10px 0px hsla(0,0%,0%,0.12), 
+		0px 2px 4px -1px hsla(0,0%,0%,0.2);
+    text-align: center;
+    
+}
+
+
+.center{
+    background-color: #6200EE;
+
+}
+
+
+.bottom-center-button {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+  }

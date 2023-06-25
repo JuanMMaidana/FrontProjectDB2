@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Publication } from '../entities/publication';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { ModalContactComponent } from '../modal-contact/modal-contact.component';
+
+
 
 @Component({
   selector: 'app-publication',
@@ -7,4 +12,17 @@ import { Component } from '@angular/core';
 })
 export class PublicationComponent {
 
-}
+  constructor(private modalService: NgbModal) { }
+
+
+  @Input() publication?: Publication;
+
+
+  openModal(){
+    const modalRef = this.modalService.open(ModalContactComponent, {centered: true, size: 'md', animation: true});
+    modalRef.componentInstance.publication = this.publication;
+  }
+
+  }
+
+

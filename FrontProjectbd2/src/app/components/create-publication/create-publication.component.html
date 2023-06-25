@@ -1,0 +1,72 @@
+<div *ngIf="categories" class="boxR">
+
+
+    <h1 class="title">Crear Publicación</h1>
+
+
+
+
+    <form class="needs-validation" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+
+
+
+        <div class="mb-3">
+            <label class="form-label titu" for="titleInput">Título</label>
+            <input formControlName="titleInput" required type="text" class="{{classTitle}}">
+            <div *ngIf="titleInput.invalid && (titleInput.dirty || titleInput.touched)">
+                <p *ngIf="titleInput.hasError('required')" class="text-danger">El título es requerido</p>
+            </div>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="description" class="form-label titu">Descripción</label>
+            <textarea formControlName="description" type="text" class="{{descriptionClass}}"  style="height: 150px"></textarea>
+            <div *ngIf="description.invalid && (description.dirty || description.touched)">
+                <p *ngIf="description.hasError('required')" class="text-danger">La description es requerida</p>
+            </div>
+
+        </div>
+        <div class="row g-2 mb-3">
+
+            <div class="col-md">
+
+
+                <select formControlName="category" class="form-select form-select-sm mb-3 textoptions border"  aria-label=".form-select-sm example">
+                    <option selected hidden>Selecciona Categoría</option>
+                    <option *ngFor="let category of categories">{{category.name}}</option>
+                </select>
+                <div *ngIf="category.invalid && (category.dirty || category.touched)">
+                    <p *ngIf="category.hasError('required')" class="text-danger">Categoria es requerida</p>
+                </div>
+
+
+            </div>
+
+            <div class="col-md">
+                <select formControlName="type" class="form-select form-select-sm mb-3 textoptions border" aria-label=".form-select-sm example">
+                    <option selected hidden>Selecciona tipo Publicación</option> <!-- NO SE MUESTRA -->
+                    <option>Necesidad</option>
+                    <option>Voluntario</option>
+                </select>
+                <div *ngIf="type.invalid && (type.dirty || type.touched)">
+                    <p *ngIf="type.hasError('required')" class="text-danger">Tipo es requerido</p>
+                </div>
+
+            </div>
+        </div>
+                <div class="input-group textoptions">
+                    <input type="file" formControlName="photoInput" for="photoInput" class="form-control textoptions" id="inputGroupFile02">
+                    <label class="input-group-text textoptions" for="inputGroupFile02">Subir</label>
+                </div>
+                <div *ngIf="photoInput.invalid && (photoInput.dirty || photoInput.touched)">
+                  <p *ngIf="photoInput.hasError('required')" class="text-danger">Una foto es requerida</p>
+              </div>
+
+                <div class="buttonSize">
+                    <button type="button" class="btn btn-primary btn-block btn-lg but" type="submit">Publicar</button>
+                </div>
+    </form>
+</div>
+
+

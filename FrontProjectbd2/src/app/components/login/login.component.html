@@ -1,0 +1,45 @@
+<div *ngIf="form" class="boxR">
+
+
+  <h1 class="title">Login</h1>
+
+
+
+
+  <form class="needs-validation" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+
+    <!-- ci -->
+    <div class="form-group mb-3 ">
+      <label class="form-label titu" for="ci">CI</label>
+      <input formControlName="ci" required type="text" class="{{emailIsValid}}" >
+    <div *ngIf="ci?.invalid && (ci?.dirty || ci?.touched)">
+      <p *ngIf="ci?.hasError('required')" class="text-danger">El CI es requerido</p>
+    </div>
+  </div>
+
+
+
+      <!-- CONTRASEÑA -->
+      <div class="form-group mb-3 ">
+        <label class="form-label titu" for="password">Contraseña</label>
+          <div>
+            <input formControlName="password" required type="password" class="{{passwordIsValid}}" >
+            <i class="bi bi-eye-slash"></i>
+           </div>
+      <div *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+        <p *ngIf="password?.hasError('required')" class="text-danger">La contraseña es requerido</p>
+      </div>
+    </div>
+
+
+
+
+    <div class="buttonSize">
+        <button type="button" class="btn btn-primary btn-block btn-lg but" type="submit">Login</button>
+    </div>
+
+
+  </form>
+</div>
+
+

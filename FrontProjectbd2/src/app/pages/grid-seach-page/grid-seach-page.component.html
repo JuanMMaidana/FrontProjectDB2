@@ -1,0 +1,21 @@
+<div class="app container ">
+
+    <div class="row">
+
+        <div class="col d-flex justify-content-center search dp01v1">
+            <i class="bi bi-search lupita dp01v1"></i>
+            <input class="dp01v1" type="text" #filmsInput placeholder="Buscar Publicación">
+        </div>
+        <div class="col d-flex justify-content-center textAndGenres">
+            <h3 class="genresText fontSize">Categorias:</h3>
+            <div class="select">
+                <select class="textoptions">
+                    <option class="textt" selected>Por Categoria</option>
+                    <option *ngFor="let category of categories">{{category.name}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+    <app-publication-grid></app-publication-grid>
+    <app-pubish-button></app-pubish-button>

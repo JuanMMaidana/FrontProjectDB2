@@ -2,6 +2,12 @@
     background-color: #9DB2BF !important;
 };    */
 
+.nav-link{
+    color: #6200EE;
+}
+.active{
+    color: #6200EE !important;
+}
 
 .center{
     text-align: center;
@@ -18,10 +24,8 @@
 
 .titulo{
     font-weight: bold;
-    color: #9DB2BF;
+    color: #6200EE;
 }
 
-.colorPerf{
-    color: #9DB2BF !important;
-}
+
 

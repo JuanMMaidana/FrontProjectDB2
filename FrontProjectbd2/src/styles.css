@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 .backround{
-    background-image: url("assets/images/4174801.jpg");
+    /* background-image: url("assets/images/4174801.jpg"); */
+    background-color: #121212;
 }
