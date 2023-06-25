@@ -16,6 +16,8 @@ export class UserService {
   private userService = 'http://localhost:3000/login';  // URL to web api
   private registerService = 'http://localhost:3000/registro';  // URL to web api
 
+  private friendStateService = 'http://localhost:3000/friendsState';  // URL to web api
+  private followFriendService = 'http://localhost:3000/seguirAmigo';  // URL to web api
 
 
 
@@ -55,7 +57,35 @@ export class UserService {
   }
 
 
+  postFollowFriend(ci_friend : number, friendbool: boolean) {
 
+    const token = this.tokenService.getToken();
+
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Authorization', `Bearer ${token}`);
+
+
+    return this.http.post(this.followFriendService, {ci_friend, friendbool} , {headers})
+    .pipe(
+      map(_res => { return {error : false, type : 'success'} }),
+      catchError(err => of({error: true, message: err.error.message}))
+    );
+  }
+
+
+  postFriendState(ci_friend: number): Observable<boolean> {
+    const token = this.tokenService.getToken();
+
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Authorization', `Bearer ${token}`);
+
+    return this.http.post<boolean>(this.friendStateService, { ci_friend }, { headers })
+      .pipe(
+        catchError(err => of(false))
+      );
+  }
 
 
 
