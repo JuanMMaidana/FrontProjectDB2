@@ -4,7 +4,7 @@
       <div class="card-body col-5 pad ">
         <h4 class="card-title act">{{publication.titulo}}</h4>
         <p class="card-text">{{publication.descripcion}}</p>
-        <p class="card-text plus">Fecha de publicacion: {{publication.fecha}}</p>
+        <p class="card-text plus">Fecha de publicacion: {{ fechaFormateada }}</p>
         <p class="card-text plus">Categoria: {{publication.categoria}}</p>
         <div class="buttonSize">
           <button type="button" class="btn btn-primary btn-block center" (click)="openModal()">Contactar</button>
