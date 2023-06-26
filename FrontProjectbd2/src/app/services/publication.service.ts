@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Publication } from '../components/entities/publication';
-import { PUBLICATIONS } from '../mocks/mock-publications';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -26,44 +25,51 @@ export class PublicationService {
   };
 
   private url = 'http://localhost:3000/publicationsUser';  // URL to web api
+
+  httpOptionsToken = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
+
   private publicationsUrl = 'http://localhost:3000/publicationsFilters';  // URL to web api
+
+  private postpublication = 'http://localhost:3000/publication'
 
 
 
   // servicio para traer publicaciones oferta, en el backend ver si el boolean es 1 o 0 para traer las ofertas
 
-  getPublicationsOfer(): Observable<Publication[]>{
-    return this.http.get<Publication[]>(this.publicationsUrl)
-    .pipe(
-      catchError(this.handleError<Publication[]>('getPublications', []))
-    );
-
-  }
-
-
-
-
-  // servicio para traer publicaciones oferta, en el backend ver si el boolean es 1 o 0 para traer las necesidaddes
-
-  getPublicationsNecesity(): Observable<Publication[]>{
-    return this.http.get<Publication[]>(this.publicationsUrl)
-    .pipe(
-      catchError(this.handleError<Publication[]>('getPublications', []))
-    );
-
-  }
-
-
-
-
   //tengo el metodo en el otro projecto
-  getPublicationByTitleAndCategory(): Observable<Publication[]>{
-    return this.http.post<Publication[]>(this.publicationsUrl, this.httpOptions)
+  getPublicationByTitleAndCategory(titulo : string, categoria : string, es_solicitud : boolean): Observable<Publication[]>{
+
+    console.log(titulo, categoria, es_solicitud);
+    if(categoria == 'Por Categoria' ){
+      categoria = '';
+    }else if (categoria == 'Buscar por categoría'){
+      categoria = '';
+    }
+
+    return this.http.post<Publication[]>(this.publicationsUrl, {titulo, categoria, es_solicitud})
     .pipe(
+      tap(_ => console.log('fetched publications')),
       catchError(this.handleError<Publication[]>('getPublications', []))
     );
+  }
 
 
+  postPublication(titulo: string, descripcion: string, id_categoria: number, es_solicitud:boolean, url: string){
+
+    const token = this.tokenService.getToken();
+
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Authorization', `Bearer ${token}`);
+
+    return this.http.post(this.postpublication, {titulo, descripcion, id_categoria, es_solicitud, url}, {headers})
+    .pipe(
+      map(_res => { return {error : false, type : 'success'} }),
+      catchError(err => of({error: true, message: err.error.message}))
+    );
   }
 
   getPublicationsByUser(): Observable<Publication[]>{

@@ -22,6 +22,7 @@ import { ModalContactComponent } from './components/modal-contact/modal-contact.
 import { ProfileComponent } from './components/profile/profile.component';
 import { FriendsComponent } from './pages/friends/friends.component';
 import { TokenService } from './services/token.service';
+import { VolunteerComponent } from './pages/volunteer/volunteer.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { TokenService } from './services/token.service';
     WelocmeComponent,
     ModalContactComponent,
     ProfileComponent,
-    FriendsComponent
+    FriendsComponent,
+    VolunteerComponent
   ],
   imports: [
     BrowserModule,

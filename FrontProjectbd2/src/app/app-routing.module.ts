@@ -7,10 +7,11 @@ import { LoginComponent } from './components/login/login.component';
 import { WelocmeComponent } from './components/welocme/welocme.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FriendsComponent } from './pages/friends/friends.component';
+import { VolunteerComponent } from './pages/volunteer/volunteer.component';
 
 const routes: Routes = [
   {path: 'necesidades', component: GridSeachPageComponent},
-  {path: 'voluntarios', component: GridSeachPageComponent},
+  {path: 'voluntarios', component: VolunteerComponent},
   {path: 'subirPublicacion', component: CreatePublicationComponent},
   {path: 'registro', component: RegisterComponent},
   {path: 'login', component: LoginComponent},

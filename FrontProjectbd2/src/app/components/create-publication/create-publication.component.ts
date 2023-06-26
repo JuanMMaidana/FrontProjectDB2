@@ -3,6 +3,8 @@ import { CategoriesService } from 'src/app/services/categories.service';
 import { Categoty } from '../entities/category';
 import { FormGroup, FormBuilder, Validators, FormControl, NonNullableFormBuilder } from '@angular/forms';
 import { from } from 'rxjs';
+import { PublicationService } from 'src/app/services/publication.service';
+import { Router } from '@angular/router';
 
 
 
@@ -13,7 +15,13 @@ import { from } from 'rxjs';
 })
 export class CreatePublicationComponent {
 
-  constructor(private categoryService: CategoriesService, private fb: NonNullableFormBuilder) {   }
+  constructor(
+    private categoryService: CategoriesService,
+    private fb: NonNullableFormBuilder,
+    private publicationService: PublicationService,
+    private router: Router
+    )
+    {   }
 
 
   categories?: Categoty[];
@@ -44,8 +52,8 @@ export class CreatePublicationComponent {
   createForm() {
     this.form = this.fb.group({
 
-      titleInput: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
-      description: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]),
+      titulo: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
+      descripcion: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]),
       category: new FormControl('', [Validators.required]),
       type: new FormControl('', [Validators.required]),
       photoInput: new FormControl('', [Validators.required])
@@ -53,12 +61,12 @@ export class CreatePublicationComponent {
     });
   }
 
-  get titleInput(){
-    return this.form.controls['titleInput'];
+  get titulo(){
+    return this.form.controls['titulo'];
   }
 
-  get description(){
-    return this.form.controls['description'];
+  get descripcion(){
+    return this.form.controls['descripcion'];
   }
 
   get category(){
@@ -83,6 +91,30 @@ export class CreatePublicationComponent {
     }
 
 
+    getIdCategoria(categoria: string): number {
+      let id = 0;
+      if (this.categories && this.categories.length > 0) {
+        this.categories.forEach(element => {
+          if (element.nombre === categoria) {
+            id = element.id_categoria;
+          }
+        });
+      }
+      return id;
+    }
+
+    esSolicitud(type: string): boolean {
+      if (type === 'Necesidad') {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+
+
+
+
 
   onSubmit( formdata: any) {
 
@@ -90,14 +122,14 @@ export class CreatePublicationComponent {
 
     let itsOk = true;
 
-    if(formdata.titleInput.length < 3 || formdata.titleInput.length > 35){
+    if(formdata.titulo.length < 3 || formdata.titulo.length > 35){
       this.classTitle = 'form-control fondo is-invalid';
       itsOk = false;
     }else{
       this.classTitle = 'form-control fondo is-valid';
     }
 
-    if(formdata.description.length < 3 || formdata.description.length > 205){
+    if(formdata.descripcion.length < 3 || formdata.descripcion.length > 205){
       this.descriptionClass = 'form-control fondo is-invalid';
       itsOk = false;
     }else{
@@ -127,9 +159,41 @@ export class CreatePublicationComponent {
     }
 
 
+
+
+
+
+
+
+
+
+
+
     if(itsOk){
-      this.subbmited = true;
       console.log('its ok');
+
+      const id_categoria = this.getIdCategoria(formdata.category);
+
+      const es_solicitud = this.esSolicitud(formdata.type);
+
+      const filePath: string = formdata.photoInput;
+      const fileName: string = filePath.split('\\').pop() || '';
+      const imagePath: string = '../../assets/images/' + fileName;
+
+      console.log(formdata.titulo, formdata.descripcion, id_categoria, es_solicitud, imagePath);
+
+
+      this.publicationService.postPublication(formdata.titulo, formdata.descripcion, id_categoria, es_solicitud, imagePath).subscribe(
+        (data) => {
+          if('type' in data && data.type == 'success'){
+            this.router.navigate(['/necesidades']);
+          }else if ('message' in data) {
+            console.log(data.message);
+          }
+        }
+      );
+
+
     }else{
       this.subbmited = false;
       console.log('its not ok');

@@ -11,19 +11,19 @@
 
 
         <div class="mb-3">
-            <label class="form-label titu" for="titleInput">Título</label>
-            <input formControlName="titleInput" required type="text" class="{{classTitle}}">
-            <div *ngIf="titleInput.invalid && (titleInput.dirty || titleInput.touched)">
-                <p *ngIf="titleInput.hasError('required')" class="text-danger">El título es requerido</p>
+            <label class="form-label titu" for="titulo">Título</label>
+            <input formControlName="titulo" required type="text" class="{{classTitle}}">
+            <div *ngIf="titulo.invalid && (titulo.dirty || titulo.touched)">
+                <p *ngIf="titulo.hasError('required')" class="text-danger">El título es requerido</p>
             </div>
         </div>
 
 
         <div class="mb-3">
-            <label for="description" class="form-label titu">Descripción</label>
-            <textarea formControlName="description" type="text" class="{{descriptionClass}}"  style="height: 150px"></textarea>
-            <div *ngIf="description.invalid && (description.dirty || description.touched)">
-                <p *ngIf="description.hasError('required')" class="text-danger">La description es requerida</p>
+            <label for="descripcion" class="form-label titu">Descripción</label>
+            <textarea formControlName="descripcion" type="text" class="{{descriptionClass}}"  style="height: 150px"></textarea>
+            <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+                <p *ngIf="descripcion.hasError('required')" class="text-danger">La description es requerida</p>
             </div>
 
         </div>
@@ -34,7 +34,7 @@
 
                 <select formControlName="category" class="form-select form-select-sm mb-3 textoptions border"  aria-label=".form-select-sm example">
                     <option selected hidden>Selecciona Categoría</option>
-                    <option *ngFor="let category of categories">{{category.name}}</option>
+                    <option *ngFor="let category of categories">{{category.nombre}}</option>
                 </select>
                 <div *ngIf="category.invalid && (category.dirty || category.touched)">
                     <p *ngIf="category.hasError('required')" class="text-danger">Categoria es requerida</p>

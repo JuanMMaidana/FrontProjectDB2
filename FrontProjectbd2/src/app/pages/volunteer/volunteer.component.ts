@@ -1,20 +1,20 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { Subscription, debounceTime, fromEvent, map, switchMap } from 'rxjs';
 import { Publication } from 'src/app/components/entities/publication';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { Categoty } from 'src/app/components/entities/category';
 import { PublicationService } from 'src/app/services/publication.service';
+import { ElementRef, ViewChild } from '@angular/core';
 
 
 @Component({
-  selector: 'app-grid-seach-page',
-  templateUrl: './grid-seach-page.component.html',
-  styleUrls: ['./grid-seach-page.component.css']
+  selector: 'app-volunteer',
+  templateUrl: './volunteer.component.html',
+  styleUrls: ['./volunteer.component.css']
 })
-export class GridSeachPageComponent {
+export class VolunteerComponent {
 
-
-  es_solicitud : boolean = true;
+  es_solicitud : boolean = false;
 
   publications: Publication[] = [];
 
@@ -39,14 +39,14 @@ export class GridSeachPageComponent {
 
     let titulo = ''
     let categoria = ''
-    const es_solicitud = true
+    const es_solicitud = false
     this.publicationService.getPublicationByTitleAndCategory(titulo,categoria, es_solicitud).subscribe(publication => this.publications = publication);
     }
 
 
 
     ngAfterViewInit(): void {
-      const es_solicitud = true;
+      const es_solicitud = false;
 
       fromEvent<Event>(this.publicationsInput.nativeElement, 'keyup').pipe(
         debounceTime(400),
@@ -74,6 +74,7 @@ export class GridSeachPageComponent {
     this.selectedCategory = ($event.target as HTMLInputElement).value;
     this.publicationService.getPublicationByTitleAndCategory( this.publicationsInput.nativeElement.value, this.selectedCategory, this.es_solicitud).subscribe(publication => this.publications = publication);
   }
+
 
 
 
