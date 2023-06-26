@@ -73,9 +73,15 @@ export class PublicationService {
   }
 
   getPublicationsByUser(): Observable<Publication[]>{
-    return this.http.post<Publication[]>(this.url, this.httpOptions)
+
+    const token = this.tokenService.getToken();
+
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<Publication[]>(this.url, {headers})
     .pipe(
-      map((res: any) => res),
       catchError(this.handleError<Publication[]>('getPublications', []))
     );
   }
