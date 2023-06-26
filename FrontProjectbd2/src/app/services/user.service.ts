@@ -12,7 +12,7 @@ import { TokenService } from './token.service';
 export class UserService {
 
 
-
+  private url = 'http://localhost:3000/';  // URL to web api
   private userService = 'http://localhost:3000/login';  // URL to web api
   private registerService = 'http://localhost:3000/registro';  // URL to web api
 
@@ -26,7 +26,7 @@ export class UserService {
 
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${this.tokenService.getToken()}` })
   };
 
 
@@ -54,6 +54,11 @@ export class UserService {
     );
   }
 
+  getProfile(){
+    return this.http.get(`${this.url}getUser`, this.httpOptions).pipe(
+      map((res: any) => res),
+      catchError(err => of({error: true, message: err.error.message})));
+  }
 
 
 

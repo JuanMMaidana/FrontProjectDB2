@@ -56,7 +56,7 @@ export class LoginComponent {
       this.emailIsValid = 'form-control fondo is-valid';
     }
 
-    if(formdata.password.length < 8 || formdata.password.length > 30){
+    if(formdata.password.length > 30){
       this.passwordIsValid = 'form-control fondo is-invalid';
       itsOk = false;
     }else{
