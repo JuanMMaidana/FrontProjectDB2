@@ -106,9 +106,12 @@
             <p *ngIf="response.hasError('required')" class="text-danger">La Respuesta no es válida</p>
           </div>
       </div>
-
-
     </div>
+
+    <div *ngIf="errorRegister" class="error-message">
+      {{ errorRegister }}
+    </div>
+
 
 
     <div class="buttonSize">

@@ -35,6 +35,8 @@ export class PublicationService {
 
   private postpublication = 'http://localhost:3000/publication'
 
+  private publicationFriends = 'http://localhost:3000/publiacionesAmigos'
+
 
 
   // servicio para traer publicaciones oferta, en el backend ver si el boolean es 1 o 0 para traer las ofertas
@@ -86,6 +88,21 @@ export class PublicationService {
     );
   }
 
+
+
+  getPublicationsFriends(): Observable<Publication[]>{
+
+    const token = this.tokenService.getToken();
+
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<Publication[]>(this.publicationFriends, {headers})
+    .pipe(
+      catchError(this.handleError<Publication[]>('getPublications', []))
+    );
+  }
 
 
 

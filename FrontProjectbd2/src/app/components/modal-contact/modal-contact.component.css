@@ -130,10 +130,17 @@
   background-color: #282828;
   border-radius: 0.5rem;
 
+
 }
 
 
 .miniData{
   color: #ffffff;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
+  text-decoration: underline #6200EE;
+  text-underline-offset: 0.3rem;
+  font-weight: bold;
+
+
 }
+

@@ -65,6 +65,12 @@ textarea{
   margin-left: 1rem;
 }
 
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin: 1rem;
+}
+
 
 .mb-3{
   padding-bottom: 0.2rem;

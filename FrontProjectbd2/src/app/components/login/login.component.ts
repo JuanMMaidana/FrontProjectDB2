@@ -19,6 +19,8 @@ export class LoginComponent {
   subbmitted = false;
   form!: FormGroup;
 
+  errorLogin: string | null = null;
+
 
   emailIsValid: string = 'form-control fondo border';
   passwordIsValid: string = 'form-control fondo border';
@@ -56,7 +58,7 @@ export class LoginComponent {
       this.emailIsValid = 'form-control fondo is-valid';
     }
 
-    if(formdata.password.length > 30){
+    if(formdata.password.length < 8 || formdata.password.length > 30){
       this.passwordIsValid = 'form-control fondo is-invalid';
       itsOk = false;
     }else{
@@ -69,10 +71,14 @@ export class LoginComponent {
         (data) => {
           if('type' in data && data.type === 'success') {
             this.router.navigate(['/necesidades']);
+          }else {
+            console.log('entro');
+            this.errorLogin = 'Credenciales inválidas. Verifica tu usuario y contraseña.';
+
           }
-          else {
-            console.log(data);
-          }
+        },
+        (error) => {
+          this.errorLogin = 'Se produjo un error al iniciar sesión. Por favor, inténtalo de nuevo.';
         }
       );
 

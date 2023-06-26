@@ -10,6 +10,12 @@
 }
 
 
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin: 1rem;
+}
+
 
 .but{
   background-color: #6200EE;

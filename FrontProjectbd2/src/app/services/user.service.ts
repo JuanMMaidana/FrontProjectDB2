@@ -36,9 +36,8 @@ export class UserService {
     return this.http.post(this.registerService, {ci, names, surnames, email, ubication, password, password2, id_question, response})
     .pipe(
       map(_res => { return {error : false, type : 'success'} }),
-      catchError(err => of({error: true, message: err.error.message}))
-    );
-
+      catchError(err => of({error: true, message: err.error?.message}))
+      );
   }
 
 

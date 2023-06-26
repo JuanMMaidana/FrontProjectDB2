@@ -21,6 +21,8 @@ export class RegisterComponent {
   subbmited = false;
   form!: FormGroup;
 
+  errorRegister: string | null = null;
+
 
 
   //CLASES CSS
@@ -208,15 +210,19 @@ export class RegisterComponent {
       this.userService.postRegister(formdata.ci, formdata.names, formdata.surname, formdata.email, formdata.direccion, formdata.password, formdata.password2, id, formdata.response).subscribe(data => {
         if ('type' in data && data.type === 'success') {
           this.router.navigate(['/login']);
-        } else if ('message' in data) {
-          console.log(data.message);
+        } else{
+          console.log('ENTRO2');
+          this.errorRegister = 'Se produjo un error al registrar. Por favor, inténtalo de nuevo.';
         }
-      });
-    } else {
-      console.log("todo mal");
-    }
-
-
+      },
+      error => {
+        console.log(error); // Mostrar cualquier otro error en la consola
+        this.errorRegister = 'Se produjo un error al registrar. Por favor, inténtalo de nuevo.'; // Mensaje de error genérico
+      }
+    );
+  } else {
+    console.log("todo mal");
+  }
 
 
 
